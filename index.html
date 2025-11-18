@@ -899,7 +899,37 @@
       </div>
     </div>
   </footer>
+/* ----------------------------- */
+/*   按鈕 Hover + box-shadow 強化版   */
+/* ----------------------------- */
 
+/* Header CTA 按鈕 */
+.nav-cta {
+  transition: transform 0.15s ease, box-shadow 0.3s ease, background 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 155, 189, 0.35);
+}
+
+.nav-cta:hover {
+  transform: translateY(-3px);
+  background: #ff7da8;
+  box-shadow: 
+    0 6px 18px rgba(255, 155, 189, 0.45),
+    0 0 16px rgba(255, 120, 180, 0.55);
+}
+
+/* 主要按鈕（粉色按鈕） */
+.btn-primary {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(255, 155, 189, 0.45);
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 26px rgba(255, 155, 189, 0.6),
+    0 0 20px rgba(236, 72, 153, 0.6);
+  background: #ff6fa1;
+}
   <script>
     // 自動帶入年份
     document.getElementById("year").textContent = new Date().getFullYear();
