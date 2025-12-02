@@ -10,11 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      /* 莫蘭迪色票（低飽和、偏灰） */
+      --m-beige:  #DDD0C8;
+      --m-beige-deep: #C9B7AA;
+      --m-greige: #B5A89A;
+      --m-green:  #A5A58D;
+      --m-green-light: #C3C9B5;
+      --m-blue:   #B8C4D0;
+      --m-blue-deep: #98A3B3;
+      --m-rose:   #C9A4A3;
+      --m-mauve:  #B9A1B8;
+      --m-bg:     #F4F1ED;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Chivo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f4f1ed;
+      background: var(--m-bg);
       color: #3c3a3a;
       line-height: 1.6;
       overflow-x: hidden;
@@ -22,15 +36,16 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* ===== Header / Nav （參考你原本 .bar 結構） ===== */
+    /* ===== Header / Nav ===== */
     header {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(244, 241, 237, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(244, 241, 237, 0.96);
+      backdrop-filter: blur(10px);
       box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(204,192,182,0.6);
     }
 
     .bar {
@@ -49,11 +64,11 @@
       gap: 8px;
     }
 
-    .a .site-title {
+    .site-title {
       font-weight: 700;
       font-size: 1.1rem;
       letter-spacing: 1px;
-      color: #6f6963;
+      color: var(--m-greige);
     }
 
     .nav-items {
@@ -68,7 +83,8 @@
       padding: 6px 12px;
       border-radius: 999px;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      background: rgba(255,255,255,0.7);
     }
 
     .item-container .column {
@@ -76,7 +92,7 @@
       height: 22px;
       border-radius: 999px;
       margin-right: 8px;
-      background: #c2b8aa;
+      background: linear-gradient(to bottom, var(--m-blue), var(--m-rose));
     }
 
     .item {
@@ -86,9 +102,14 @@
     }
 
     .item-container.hover-active {
-      background-color: rgba(221, 208, 200, 0.65);
+      background: linear-gradient(135deg, var(--m-blue), var(--m-mauve));
+      color: #fdfbf8;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .item-container.hover-active .item {
+      color: #fdfbf8;
     }
 
     /* ===== Hero + three.js ===== */
@@ -96,8 +117,9 @@
       position: relative;
       width: 100%;
       min-height: 80vh;
-      padding-top: 80px; /* 避開 fixed header */
-      background: linear-gradient(135deg, #ddd0c8 0%, #d2cbc2 45%, #f1eee9 100%);
+      padding-top: 80px;
+      /* 多色莫蘭迪漸層背景 */
+      background: radial-gradient(circle at 10% 20%, #E6DFD6 0, #D6DDE6 40%, #D0D8CE 76%, #F5F0EB 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,18 +143,50 @@
     }
 
     .hero-card {
-      background: rgba(250, 248, 245, 0.94);
-      border-radius: 18px;
+      background: rgba(250, 248, 245, 0.95);
+      border-radius: 20px;
       padding: 22px 22px 24px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.12);
       border: 1px solid rgba(211, 200, 191, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* hero 卡片角落色塊 */
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 32px;
+      background: radial-gradient(circle at 20% 20%, rgba(184,196,208,0.65), transparent 60%);
+      opacity: 0.9;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: -60px;
+      width: 170px;
+      height: 170px;
+      border-radius: 32px;
+      background: radial-gradient(circle at 70% 70%, rgba(197,180,190,0.6), transparent 55%);
+      opacity: 0.9;
+    }
+
+    .hero-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .tagline {
       font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #948c83;
+      color: var(--m-blue-deep);
       margin-bottom: 8px;
     }
 
@@ -143,7 +197,7 @@
     }
 
     .hero-name span {
-      color: #8a817c; /* 深一點的莫蘭迪色 */
+      color: var(--m-rose);
     }
 
     .hero-role {
@@ -170,7 +224,7 @@
       padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid rgba(144, 134, 124, 0.55);
-      background: rgba(250, 248, 245, 0.95);
+      background: linear-gradient(135deg, #F6F3EF, #E0D5C8);
       color: #5c544c;
     }
 
@@ -187,21 +241,21 @@
       padding: 8px 16px;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.25s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.25s ease, color 0.25s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
 
     .btn-primary {
-      background: #8a817c;
+      background: linear-gradient(135deg, var(--m-green), var(--m-blue-deep));
       color: #fdfbf8;
-      box-shadow: 0 8px 20px rgba(69, 63, 59, 0.35);
+      box-shadow: 0 8px 22px rgba(69, 63, 59, 0.35);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 26px rgba(69, 63, 59, 0.45);
+      box-shadow: 0 12px 28px rgba(69, 63, 59, 0.45);
     }
 
     .btn-ghost {
@@ -219,9 +273,12 @@
       display: none;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px dashed rgba(168, 155, 143, 0.6);
+      border-top: 1px dashed rgba(168, 155, 143, 0.7);
       font-size: 0.9rem;
       color: #5c544c;
+      background: linear-gradient(90deg, rgba(184,196,208,0.15), rgba(197,180,190,0.12));
+      border-radius: 0 0 12px 12px;
+      padding-bottom: 6px;
     }
 
     .hero-photo-card {
@@ -229,26 +286,42 @@
       justify-self: center;
       max-width: 280px;
       width: 100%;
-      background: rgba(250,248,245,0.92);
-      border-radius: 18px;
+      background: #F7F4F0;
+      border-radius: 20px;
       padding: 12px 12px 16px;
       border: 1px solid rgba(209, 197, 187, 0.9);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo-card::before {
+      content: "";
+      position: absolute;
+      top: -30px; left: 50%;
+      transform: translateX(-50%);
+      width: 160px; height: 60px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, rgba(181,168,154,0.35), rgba(184,196,208,0.3));
     }
 
     .hero-photo {
+      position: relative;
       width: 100%;
       height: 220px;
       border-radius: 14px;
       object-fit: cover;
       background: #d3c7bc;
+      z-index: 1;
     }
 
     .hero-photo-note {
       font-size: 0.8rem;
       color: #6a635c;
       margin-top: 10px;
+      position: relative;
+      z-index: 1;
     }
 
     /* ===== Main sections ===== */
@@ -280,36 +353,65 @@
     .section-line {
       flex: 1;
       height: 2px;
-      background: linear-gradient(90deg,#c8beb5,#e0d7cf);
       border-radius: 999px;
+      background: linear-gradient(90deg, var(--m-blue), var(--m-rose));
+    }
+
+    .section-header:nth-of-type(1) .section-line {
+      background: linear-gradient(90deg, var(--m-green-light), var(--m-beige-deep));
     }
 
     .section-title {
       font-size: 1.4rem;
       color: #5a524c;
       white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(221,208,200,0.6);
     }
 
     .section-sub {
       font-size: 0.92rem;
       color: #7b736b;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    /* Highlights cards */
+    /* 卡片區：用不同底色的莫蘭迪色塊 */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
     .info-card {
-      background: #f6f2ed;
-      border-radius: 14px;
+      background: #F6F2ED;
+      border-radius: 16px;
       padding: 14px 14px 16px;
       border: 1px solid rgba(204,192,182,0.9);
       box-shadow: 0 8px 20px rgba(0,0,0,0.04);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0;
+      width: 6px; height: 100%;
+      background: linear-gradient(to bottom, var(--m-blue), var(--m-mauve));
+    }
+
+    .info-card:nth-child(2)::before {
+      background: linear-gradient(to bottom, var(--m-green), var(--m-beige-deep));
+    }
+
+    .info-card:nth-child(3)::before {
+      background: linear-gradient(to bottom, var(--m-rose), var(--m-blue-deep));
+    }
+
+    .info-card:nth-child(4)::before {
+      background: linear-gradient(to bottom, var(--m-mauve), var(--m-green-light));
     }
 
     .info-card:hover {
@@ -338,9 +440,13 @@
 
     /* Timeline */
     .timeline {
-      border-left: 2px solid #c3b8ae;
+      border-left: 2px solid var(--m-beige-deep);
       padding-left: 16px;
       margin-top: 4px;
+      background: linear-gradient(90deg, rgba(184,196,208,0.12), transparent);
+      border-radius: 12px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     .timeline-item {
@@ -351,10 +457,10 @@
     .timeline-dot {
       width: 10px; height: 10px;
       border-radius: 50%;
-      background: #8a817c;
+      background: var(--m-green);
       position: absolute;
       left: -21px; top: 4px;
-      border: 2px solid #f6f2ed;
+      border: 2px solid #F6F2ED;
     }
 
     .timeline-title {
@@ -386,13 +492,13 @@
       padding: 6px 12px;
       border-radius: 999px;
       border: 1px dashed rgba(139,129,120,0.9);
-      background: rgba(244,241,237,0.9);
+      background: linear-gradient(135deg, rgba(184,196,208,0.25), rgba(221,208,200,0.4));
       color: #5c544d;
     }
 
     /* Contact */
     .contact-box {
-      background: #f3eee9;
+      background: linear-gradient(135deg, #F0EBE5, #D7E0E7);
       border-radius: 16px;
       padding: 16px 18px;
       border: 1px solid rgba(191,179,168,0.9);
@@ -415,7 +521,7 @@
       border: none;
       cursor: pointer;
       font-size: 18px;
-      background: #8a817c;
+      background: linear-gradient(135deg, var(--m-green), var(--m-blue-deep));
       color: #fdfbf8;
       box-shadow: 0 8px 20px rgba(0,0,0,0.18);
       opacity: 0;
@@ -471,8 +577,6 @@
   <header> 
     <div class="bar">
       <div class="a">
-        <!-- 這裡可以換成你的 Logo 或簡單字樣 -->
-        <!-- <img src="logo.png" width="120" alt="Logo"> -->
         <div class="site-title">My Resume Page</div>
       </div>
       <div class="nav-items">
@@ -525,7 +629,6 @@
           <button class="btn btn-ghost" id="btn-more">More about me</button>
         </div>
 
-        <!-- jQuery slideToggle 顯示更多自我介紹 -->
         <div class="hero-more" id="hero-more">
           喜歡在陌生環境中觀察人群與文化差異，這也是為什麼我選擇出國交換。
           在國外的那一年，練習用英文報告、與不同背景的同學合作專題，
@@ -534,7 +637,6 @@
       </div>
 
       <div class="hero-photo-card">
-        <!-- 換成你的個人照片 -->
         <img src="avatar.jpg" alt="My Photo" class="hero-photo">
         <div class="hero-photo-note">
           A snapshot of me during my exchange year.<br>（此處可換成你的照片）
@@ -773,7 +875,7 @@
       var height = container.clientHeight || window.innerHeight * 0.7;
 
       var scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xddd0c8);
+      scene.background = new THREE.Color(0xDDD0C8);
 
       var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
       camera.position.set(0, 0, 6);
@@ -786,23 +888,23 @@
       // 柔和燈光
       var ambient = new THREE.AmbientLight(0xffffff, 0.85);
       scene.add(ambient);
-      var directional = new THREE.DirectionalLight(0xf5efe9, 0.9);
+      var directional = new THREE.DirectionalLight(0xF5EFE9, 0.9);
       directional.position.set(3, 4, 5);
       scene.add(directional);
 
-      // 低多邊形幾何（像一塊石頭或 Logo）
+      // 幾何主體
       var geo = new THREE.IcosahedronGeometry(1.8, 1);
       var mat = new THREE.MeshStandardMaterial({
-        color: 0xc8b8aa,
+        color: 0xB5A89A, // var(--m-greige)
         roughness: 0.45,
-        metalness: 0.1
+        metalness: 0.12
       });
       var shape = new THREE.Mesh(geo, mat);
       scene.add(shape);
 
-      // 幾個小圓球點綴
+      // 小球（莫蘭迪色系）
       var sphereGeo = new THREE.SphereGeometry(0.12, 16, 16);
-      var colors = [0xb7c2bd, 0xc5b7a4, 0xa7b0ae];
+      var colors = [0xB8C4D0, 0xA5A58D, 0xC9A4A3, 0xB9A1B8];
       var spheres = [];
       for (var i = 0; i < 10; i++) {
         var sphereMat = new THREE.MeshStandardMaterial({
