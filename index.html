@@ -7,7 +7,7 @@
   <meta name="description"
         content="Janet's personal page – Information Management student with overseas experience, IELTS 7.0 and TOPIK Level 3." />
 
-  <!-- Google Fonts：Poppins = 內文；Pacifico = Logo；Playfair = Hi, I'm Janet -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -90,7 +90,7 @@
       text-align: center;
     }
 
-    /* Hi, I'm Janet：換成比較漂亮的 serif 字體 */
+    /* Hi, I'm Janet：漂亮一點的 serif 字體 */
     .intro-small {
       font-family: "Playfair Display", serif;
       font-weight: 600;
@@ -103,7 +103,7 @@
       font-size: 1.4rem;
     }
 
-    /* 動態 emoji 頭像 */
+    /* 動態 emoji 頭像（你自己的 Q 版頭像） */
     .animated-avatar {
       width: 160px;
       height: 160px;
@@ -118,14 +118,11 @@
       animation: headTilt 4s ease-in-out infinite;
     }
 
-    /* 上下浮動 */
     @keyframes float {
       0%   { transform: translateY(0); }
       50%  { transform: translateY(-6px); }
       100% { transform: translateY(0); }
     }
-
-    /* 左右微微轉頭 */
     @keyframes headTilt {
       0%   { transform: rotate(0deg); }
       25%  { transform: rotate(-3deg); }
@@ -189,7 +186,7 @@
     }
     .tk    { background: #111; color: #fff; }
 
-    /* ========= 下方區塊 ========= */
+    /* ========= 下方區塊通用 ========= */
     section.anchor {
       padding: 32px;
       border-top: 1px solid #e5e7eb;
@@ -201,6 +198,64 @@
     section.anchor p {
       font-size: 0.9rem;
       color: #6b7280;
+      max-width: 680px;
+    }
+
+    /* ======= About：左文字右照片 ======= */
+    #about .about-layout {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      max-width: 860px;
+      margin: 6px auto 0;
+    }
+
+    .about-text {
+      flex: 2;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #4b5563;
+    }
+
+    .about-text p + p {
+      margin-top: 12px;
+    }
+
+    .about-photo-card {
+      flex: 1;
+      max-width: 260px;
+      min-width: 200px;
+      perspective: 800px; /* 讓旋轉有立體感 */
+    }
+
+    .about-photo-inner {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      transform: rotate(-2deg);
+      transform-origin: center center;
+      transition:
+        transform 0.4s cubic-bezier(0.21, 0.61, 0.35, 1),
+        box-shadow 0.4s ease;
+    }
+
+    .about-photo-inner img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 滑鼠移到照片：微微抬起＋歪斜 */
+    .about-photo-card:hover .about-photo-inner {
+      transform: translateY(-10px) rotate(3deg);
+      box-shadow: 0 20px 34px rgba(0,0,0,0.28);
+    }
+
+    /* ========= Skills / Contact ========= */
+    #skills p, #contact p {
       max-width: 680px;
     }
 
@@ -228,7 +283,7 @@
       opacity: 0.95;
     }
 
-    /* RWD */
+    /* RWD 手機版：About 改成上下排 */
     @media (max-width: 768px) {
       body { padding: 12px; }
       .window { border-radius: 16px; }
@@ -238,6 +293,18 @@
       .title-main { font-size: 2rem; }
       .title-sub  { font-size: 1.2rem; }
       section.anchor { padding: 24px 18px 32px; }
+
+      #about .about-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about-text {
+        text-align: left;
+      }
+      .about-photo-card {
+        max-width: 260px;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -265,7 +332,7 @@
         Hi, I&apos;m Janet<span> 👋</span>
       </div>
 
-      <!-- 這裡放你剛下載、改名為 janet-emoji.png 的檔案 -->
+      <!-- 你的 Q 版 emoji 頭像 -->
       <div class="animated-avatar">
         <img src="janet-emoji.png" alt="Janet Emoji Avatar">
       </div>
@@ -288,21 +355,40 @@
       </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- ABOUT：左文字右照片 -->
     <section id="about" class="anchor">
       <h2>About Me</h2>
-      <p>
-        I&apos;m currently studying Information Management and enjoy exploring how data, design, and
-        real-life stories can be woven together into meaningful projects. My year abroad helped me
-        grow more independent, confident, and comfortable working with people from different cultures.
-      </p>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            Hello! I&apos;m Janet, currently majoring in Information Management.
+            During my year abroad, I had the chance to study and live with classmates
+            from different countries, which strengthened both my language skills
+            and my ability to work in diverse teams.
+          </p>
+          <p>
+            Outside of class, I enjoy K-pop, exploring cafés and hunting for good food.
+            These interests often become inspiration for my projects – such as travel
+            planning tools, restaurant recommendation pages, or friendly interfaces
+            for people who are not familiar with technology.
+          </p>
+        </div>
+
+        <!-- 右邊照片：請放一張 janet-about.jpg -->
+        <div class="about-photo-card">
+          <div class="about-photo-inner">
+            <img src="janet-about.jpg" alt="Janet portrait">
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="anchor">
       <h2>Skills</h2>
       <p>
-        Python · R · SQL · HTML · CSS · JavaScript · basic React · data analysis · presentation &amp; communication.
+        Python · R · SQL · HTML · CSS · JavaScript · basic React · data analysis ·
+        presentation &amp; communication.
       </p>
     </section>
 
@@ -315,7 +401,7 @@
       </p>
     </section>
 
-    <!-- Return 按鈕 -->
+    <!-- 返回頂部按鈕 -->
     <div class="return-button-wrapper">
       <button class="return-btn"
               onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
