@@ -1,955 +1,327 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <title>My Morandi Resume Page</title>
+  <meta charset="UTF-8" />
+  <title>Janet · Personal Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Janet's personal page – Information Management student with overseas experience, IELTS 7.0 and TOPIK Level 3." />
 
-  <!-- 字型 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts：Poppins = 內文；Pacifico = Logo；Playfair = Hi, I'm Janet -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      /* 你指定的兩個主色＋延伸 */
-      --main-pink:  #D4B8B4;
-      --main-cream: #DDD0C8;
-
-      --pink-light: #E3CFCB;
-      --pink-deep:  #C9A39E;
-
-      --cream-light: #EDE4DD;
-      --cream-deep:  #C7B7AC;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Chivo", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--cream-light);
-      color: #333130;
-      line-height: 1.6;
-      overflow-x: hidden;
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      color: #111827;
+      background:
+        radial-gradient(circle at 0% 0%, #ff7d3a 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, #cf2b92 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #2b3cff 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, #ff3c3c 0, transparent 55%),
+        #050816;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
     }
 
-    a { text-decoration: none; color: inherit; }
-
-    /* ===== Header / Nav ===== */
-    header {
-      position: fixed;
-      top: 0; left: 0;
+    /* 外層視窗卡片 */
+    .window {
       width: 100%;
-      z-index: 1000;
-      background: rgba(237,228,221,0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(199,183,172,0.7);
+      max-width: 960px;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 22px 70px rgba(0,0,0,0.45);
+      overflow: hidden;
+      position: relative;
     }
 
-    .bar {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 18px;
+    /* 視窗上方列 */
+    .window-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      padding: 14px 26px;
+      border-bottom: 1px solid #e5e7eb;
+      background: #f9fafb;
     }
 
-    .a {
+    .browser-dots {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      gap: 6px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .red   { background: #ff5f57; }
+    .amber { background: #febc2e; }
+    .green { background: #28c840; }
+
+    .logo-name {
+      flex: 1;
+      text-align: center;
+      font-family: "Pacifico", cursive;
+      font-size: 1.15rem;
+      color: #374151;
     }
 
-    .site-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      color: #6B544F;
-    }
-
-    .nav-items {
+    .nav {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .item-container {
-      display: flex;
-      align-items: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      cursor: pointer;
-      background: rgba(255,255,255,0.9);
-      transition: transform 0.18s ease, background 0.25s ease, color 0.25s ease;
-    }
-
-    .item-container .column {
-      width: 4px;
-      height: 20px;
-      border-radius: 999px;
-      margin-right: 8px;
-      background: linear-gradient(to bottom, var(--main-pink), var(--main-cream));
-    }
-
-    .item {
+      gap: 20px;
       font-size: 0.9rem;
-      color: #4e4945;
-      white-space: nowrap;
     }
-
-    .item-container.hover-active {
-      background: var(--main-pink);
-      color: #fff;
-      transform: translateY(-1px);
+    .nav a {
+      text-decoration: none;
+      color: #6b7280;
+      font-weight: 500;
+      transition: color 0.18s ease;
     }
+    .nav a:hover { color: #111827; }
 
-    .item-container.hover-active .item {
-      color: #fff;
-    }
-
-    /* ===== Hero + three.js ===== */
+    /* ========= HERO 主頁 ========= */
     .hero {
-      position: relative;
+      padding: 42px 32px 36px;
+      text-align: center;
+    }
+
+    /* Hi, I'm Janet：換成比較漂亮的 serif 字體 */
+    .intro-small {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      letter-spacing: 0.03em;
+      color: #111827;
+    }
+    .intro-small span {
+      margin-left: 6px;
+      font-size: 1.4rem;
+    }
+
+    /* 動態 emoji 頭像 */
+    .animated-avatar {
+      width: 160px;
+      height: 160px;
+      margin: 28px auto 0;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    .animated-avatar img {
       width: 100%;
-      min-height: 82vh;
-      padding-top: 80px;
-      background:
-        radial-gradient(circle at 10% 0%, var(--pink-light) 0, transparent 40%),
-        radial-gradient(circle at 90% 0%, var(--cream-light) 0, transparent 40%),
-        linear-gradient(135deg, var(--cream-light), var(--main-cream));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      animation: headTilt 4s ease-in-out infinite;
     }
 
-    #three-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
+    /* 上下浮動 */
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      width: 100%;
-      padding: 32px 20px 46px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 28px;
+    /* 左右微微轉頭 */
+    @keyframes headTilt {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(-3deg); }
+      50%  { transform: rotate(0deg); }
+      75%  { transform: rotate(3deg); }
+      100% { transform: rotate(0deg); }
     }
 
-    .hero-card {
-      background: var(--cream-light);
-      border-radius: 18px;
-      padding: 22px 22px 24px;
-      border: 1px solid var(--cream-deep);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06); /* 輕量陰影 */
-      position: relative;
-      overflow: hidden;
+    .title-main {
+      margin-top: 26px;
+      font-size: 2.4rem;
+      font-weight: 700;
     }
 
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      top: -40px; right: -70px;
-      width: 190px; height: 190px;
-      border-radius: 40px;
-      background: radial-gradient(circle at 30% 20%, rgba(212,184,180,0.6), transparent 65%);
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      bottom: -40px; left: -60px;
-      width: 180px; height: 180px;
-      border-radius: 40px;
-      background: radial-gradient(circle at 60% 70%, rgba(221,208,200,0.7), transparent 60%);
-    }
-
-    .hero-card > * {
-      position: relative;
-      z-index: 1;
+    .title-sub {
+      margin-top: 4px;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #4b5563;
     }
 
     .tagline {
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #8A6D68;
-      margin-bottom: 8px;
-    }
-
-    .hero-name {
-      font-size: 2.2rem;
-      margin-bottom: 6px;
-      color: #514b46;
-    }
-
-    .hero-name span {
-      color: var(--pink-deep);
-    }
-
-    .hero-role {
-      font-size: 1rem;
-      margin-bottom: 14px;
-      color: #6b645d;
-    }
-
-    .hero-summary {
+      margin-top: 22px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
       font-size: 0.95rem;
-      margin-bottom: 18px;
-      color: #514c47;
+      line-height: 1.7;
+      color: #6b7280;
     }
+    .tagline span { font-weight: 600; }
 
-    .badges {
+    .social-row {
+      margin-top: 26px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
+      justify-content: center;
+      gap: 14px;
     }
-
-    .badge {
-      font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--cream-deep);
-      background: linear-gradient(135deg, #F8F3F0, var(--main-cream));
-      color: #524a44;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-
-    .btn {
+    .social-btn {
+      height: 42px;
+      width: 42px;
       border-radius: 999px;
       border: none;
-      padding: 8px 16px;
-      font-size: 0.9rem;
       cursor: pointer;
-      transition: transform 0.18s ease, background 0.25s ease, color 0.25s ease;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 20px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
     }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--main-pink), var(--pink-deep));
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      opacity: 0.92;
+    }
+    .email { background: #ffcf4a; }
+    .x     { background: #111827; color: #fff; }
+    .ig {
+      background: radial-gradient(circle at 30% 30%, #fdf497 0, #fd5949 45%, #d6249f 60%, #285AEB 90%);
       color: #fff;
-      box-shadow: none;
     }
+    .tk    { background: #111; color: #fff; }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
+    /* ========= 下方區塊 ========= */
+    section.anchor {
+      padding: 32px;
+      border-top: 1px solid #e5e7eb;
     }
-
-    .btn-ghost {
-      background: var(--cream-light);
-      color: #5a524c;
-      border: 1px solid var(--cream-deep);
-      box-shadow: none;
+    section.anchor h2 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
     }
-
-    .btn-ghost:hover {
-      background: var(--main-cream);
-      transform: translateY(-2px);
-    }
-
-    .hero-more {
-      display: none;
-      margin-top: 10px;
-      padding: 10px 10px 8px;
-      border-radius: 12px;
+    section.anchor p {
       font-size: 0.9rem;
-      color: #524a44;
-      background: linear-gradient(135deg, rgba(212,184,180,0.25), rgba(221,208,200,0.3));
-      border: 1px dashed var(--cream-deep);
+      color: #6b7280;
+      max-width: 680px;
     }
 
-    .hero-photo-card {
-      align-self: center;
-      justify-self: center;
-      max-width: 280px;
-      width: 100%;
-      background: var(--cream-light);
-      border-radius: 18px;
-      padding: 14px 14px 16px;
-      border: 1px solid var(--cream-deep);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo-card::before {
-      content: "";
+    /* Return 按鈕 */
+    .return-button-wrapper {
       position: absolute;
-      top: -25px; left: -10px;
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212,184,180,0.45), transparent 60%);
-    }
-
-    .hero-photo-card::after {
-      content: "";
-      position: absolute;
-      bottom: -25px; right: -20px;
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(221,208,200,0.5), transparent 60%);
-    }
-
-    .hero-photo {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      border-radius: 16px;
-      object-fit: cover;
-      background: #d3c7bc;
-      z-index: 1;
-    }
-
-    .hero-photo-note {
-      font-size: 0.8rem;
-      color: #5b534c;
-      margin-top: 10px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ===== Main sections ===== */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 70px;
-    }
-
-    .section {
-      margin: 52px 0;
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--main-cream), var(--main-pink));
-    }
-
-    .section-title {
-      font-size: 1.35rem;
-      color: #514b46;
-      white-space: nowrap;
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--cream-light), var(--main-cream));
-    }
-
-    .section-sub {
-      font-size: 0.92rem;
-      color: #6b645d;
-      margin-bottom: 8px;
-    }
-
-    /* ===== Highlights cards ===== */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .info-card {
-      border-radius: 16px;
-      padding: 14px 14px 16px;
-      border: 1px solid var(--cream-deep);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .info-card:nth-child(1) {
-      background: linear-gradient(135deg, #F9F5F2, var(--main-cream));
-    }
-    .info-card:nth-child(2) {
-      background: linear-gradient(135deg, #F9F5F2, var(--pink-light));
-    }
-    .info-card:nth-child(3) {
-      background: linear-gradient(135deg, #F9F5F2, var(--cream-light));
-    }
-    .info-card:nth-child(4) {
-      background: linear-gradient(135deg, #F9F5F2, var(--main-pink));
-    }
-
-    .info-card::before {
-      content: "";
-      position: absolute;
-      left: -4px; top: 0;
-      width: 8px; height: 100%;
-      background: linear-gradient(to bottom, var(--main-pink), var(--main-cream));
-      opacity: 0.9;
-    }
-
-    .info-card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #514b46;
-      margin-bottom: 4px;
-    }
-
-    .info-card-tag {
-      font-size: 0.8rem;
-      color: #7a726b;
-      margin-bottom: 8px;
-    }
-
-    .info-card-body {
-      font-size: 0.9rem;
-      color: #574f49;
-    }
-
-    /* ===== Experience / Timeline ===== */
-    .timeline-wrap {
-      background: linear-gradient(135deg, #F8F3F0, var(--main-cream));
-      border-radius: 16px;
-      padding: 14px 18px 10px;
-      border: 1px solid var(--cream-deep);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-
-    .timeline {
-      border-left: 2px solid var(--pink-deep);
-      padding-left: 16px;
-      margin-top: 4px;
-    }
-
-    .timeline-item {
-      margin-bottom: 14px;
-      position: relative;
-    }
-
-    .timeline-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: var(--main-pink);
-      position: absolute;
-      left: -21px; top: 4px;
-      border: 2px solid #F8F3F0;
-    }
-
-    .timeline-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #514b46;
-    }
-
-    .timeline-meta {
-      font-size: 0.8rem;
-      color: #857b73;
-      margin-bottom: 3px;
-    }
-
-    .timeline-body {
-      font-size: 0.88rem;
-      color: #5f5851;
-    }
-
-    /* ===== Traits ===== */
-    .traits-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .trait-chip {
-      font-size: 0.85rem;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px dashed var(--cream-deep);
-      background: linear-gradient(135deg, rgba(212,184,180,0.35), rgba(221,208,200,0.6));
-      color: #4f4741;
-    }
-
-    /* ===== Contact ===== */
-    .contact-box {
-      background: linear-gradient(135deg, #F9F5F2, var(--main-cream));
-      border-radius: 16px;
-      padding: 16px 18px;
-      border: 1px solid var(--cream-deep);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-
-    .contact-row {
-      font-size: 0.92rem;
-      color: #514b46;
-      margin-bottom: 4px;
-    }
-
-    /* Back to top */
-    #back-to-top {
-      position: fixed;
-      right: 18px;
       bottom: 20px;
-      width: 40px; height: 40px;
+      right: 20px;
+    }
+    .return-btn {
+      height: 44px;
+      width: 44px;
       border-radius: 999px;
       border: none;
+      background: #111827;
+      color: #ffffff;
+      font-size: 20px;
       cursor: pointer;
-      font-size: 18px;
-      background: var(--main-pink);
-      color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.2s ease;
-      z-index: 999;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+    .return-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.45);
+      opacity: 0.95;
     }
 
-    #back-to-top.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #back-to-top:hover {
-      transform: translateY(-2px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px 26px;
-      font-size: 0.8rem;
-      color: #8f857d;
-    }
-
+    /* RWD */
     @media (max-width: 768px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-card {
-        order: 2;
-      }
-      .hero-photo-card {
-        order: 1;
-        max-width: 230px;
-      }
-      .hero-name {
-        font-size: 1.8rem;
-      }
-      .bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-items {
-        width: 100%;
-        justify-content: flex-start;
-      }
+      body { padding: 12px; }
+      .window { border-radius: 16px; }
+      .window-header { flex-wrap: wrap; gap: 10px; }
+      .logo-name { order: 3; width: 100%; text-align: center; }
+      .hero { padding: 32px 18px 28px; }
+      .title-main { font-size: 2rem; }
+      .title-sub  { font-size: 1.2rem; }
+      section.anchor { padding: 24px 18px 32px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header> 
-    <div class="bar">
-      <div class="a">
-        <div class="site-title">My Resume Page</div>
+  <div class="window" id="top">
+    <!-- Header -->
+    <div class="window-header">
+      <div class="browser-dots">
+        <div class="dot red"></div>
+        <div class="dot amber"></div>
+        <div class="dot green"></div>
       </div>
-      <div class="nav-items">
-        <div class="item-container" data-target="#about">
-          <div class="column"></div>
-          <div class="item">About</div>
-        </div>
-        <div class="item-container" data-target="#highlights">
-          <div class="column"></div>
-          <div class="item">Highlights</div>
-        </div>
-        <div class="item-container" data-target="#experience">
-          <div class="column"></div>
-          <div class="item">Experience</div>
-        </div>
-        <div class="item-container" data-target="#traits">
-          <div class="column"></div>
-          <div class="item">Traits</div>
-        </div>
-        <div class="item-container" data-target="#contact">
-          <div class="column"></div>
-          <div class="item">Contact</div>
-        </div>
-      </div>
-    </div> 
-  </header>
+      <div class="logo-name">Janet</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
 
-  <!-- Hero + three.js 背景 -->
-  <section class="hero" id="top">
-    <div id="three-bg"></div>
-
-    <div class="hero-inner">
-      <div class="hero-card">
-        <div class="tagline">PERSONAL RESUME</div>
-        <h1 class="hero-name">Hi, I’m <span>Your Name</span></h1>
-        <div class="hero-role">Information Management Student · K-pop & Food Lover</div>
-        <p class="hero-summary">
-          一年海外交換留學經驗，雅思 7.0，喜歡把資料整理成有故事感的內容。
-          同時熱愛 K-pop 舞台和各種美食，希望未來在資料分析或 UX 相關領域發展。
-        </p>
-
-        <div class="badges">
-          <div class="badge">Overseas Exchange · 1 year</div>
-          <div class="badge">IELTS 7.0</div>
-          <div class="badge">Python / R / Web</div>
-        </div>
-
-        <div class="hero-buttons">
-          <button class="btn btn-primary" data-scroll="#highlights">View Highlights</button>
-          <button class="btn btn-ghost" id="btn-more">More about me</button>
-        </div>
-
-        <div class="hero-more" id="hero-more">
-          喜歡在陌生環境中觀察人群與文化差異，這也是為什麼我選擇出國交換。
-          在國外的那一年，練習用英文報告、與不同背景的同學合作專題，
-          也讓我更確定自己想走「結合理性分析與人性理解」的路。
-        </div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="intro-small">
+        Hi, I&apos;m Janet<span> 👋</span>
       </div>
 
-      <div class="hero-photo-card">
-        <img src="avatar.jpg" alt="My Photo" class="hero-photo">
-        <div class="hero-photo-note">
-          A snapshot of me during my exchange year.<br>（這裡換成你的照片）
-        </div>
+      <!-- 這裡放你剛下載、改名為 janet-emoji.png 的檔案 -->
+      <div class="animated-avatar">
+        <img src="janet-emoji.png" alt="Janet Emoji Avatar">
+      </div>
+
+      <div class="title-main">Information Management Student</div>
+      <div class="title-sub">K-pop &amp; Food Lover</div>
+
+      <p class="tagline">
+        I’m an Information Management student with one year of overseas study experience.
+        Fluent in Mandarin, English, and Korean, with <span>IELTS 7.0</span> and
+        <span>TOPIK Level 3</span>. I enjoy combining technology with human-centered creativity,
+        and I hope to work in roles that connect <span>data-driven innovation, UX design, and cross-cultural collaboration</span>.
+      </p>
+
+      <div class="social-row">
+        <button class="social-btn email">✉️</button>
+        <button class="social-btn x">X</button>
+        <button class="social-btn ig">♡</button>
+        <button class="social-btn tk">♫</button>
       </div>
     </div>
-  </section>
 
-  <!-- Main content -->
-  <main>
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2 class="section-title">About Me</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-sub">
-        這一頁希望像是「簡歷＋自我介紹」，給第一次認識我的人一個快速的印象。
-      </p>
-      <p class="section-sub">
-        你可以在這裡介紹：科系、關心的議題、喜歡的專案類型，或是未來想走的職涯方向。
-        例如「對資料視覺化、旅遊資訊整合、長者友善科技」有興趣等。
+    <!-- ABOUT -->
+    <section id="about" class="anchor">
+      <h2>About Me</h2>
+      <p>
+        I&apos;m currently studying Information Management and enjoy exploring how data, design, and
+        real-life stories can be woven together into meaningful projects. My year abroad helped me
+        grow more independent, confident, and comfortable working with people from different cultures.
       </p>
     </section>
 
-    <!-- Highlights -->
-    <section class="section" id="highlights">
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2 class="section-title">Highlights</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-sub">
-        幾個可以快速理解我的關鍵點：海外經驗、語言能力、專業技能與 Side Project。
+    <!-- SKILLS -->
+    <section id="skills" class="anchor">
+      <h2>Skills</h2>
+      <p>
+        Python · R · SQL · HTML · CSS · JavaScript · basic React · data analysis · presentation &amp; communication.
       </p>
-
-      <div class="card-grid">
-        <div class="info-card">
-          <div class="info-card-title">Overseas Exchange</div>
-          <div class="info-card-tag">Study Abroad · 1 year</div>
-          <div class="info-card-body">
-            曾在 <strong>某國 / 某大學</strong> 交換一年，修習行銷、資訊管理與跨文化溝通相關課程。
-            在國外完成多次英文報告與團體專題。
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-title">IELTS 7.0</div>
-          <div class="info-card-tag">Language Proficiency</div>
-          <div class="info-card-body">
-            雅思總分 7.0（Listening / Reading / Writing / Speaking 可自行填），
-            能以英文進行簡報、學術討論與日常合作。
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-title">Tech & Tools</div>
-          <div class="info-card-tag">Skills</div>
-          <div class="info-card-body">
-            熟悉 Python / R 資料分析、基礎 Web (HTML / CSS / JS)，
-            做過幾個小型專案：旅遊網站、餐廳搜尋平台、聊天系統等等。
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-card-title">K-pop & Food</div>
-          <div class="info-card-tag">Personality</div>
-          <div class="info-card-body">
-            喜歡把 K-pop 舞台、歌詞和自己的生活連結；也會紀錄各地咖啡廳與小吃，
-            常常變成我做專題題目的靈感來源。
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Experience -->
-    <section class="section" id="experience">
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2 class="section-title">Experience</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-sub">
-        這裡可以放學校經歷、專題、實習或打工。下面只是範例文字，可以照格式替換。
+    <!-- CONTACT -->
+    <section id="contact" class="anchor">
+      <h2>Contact</h2>
+      <p>
+        If you&apos;re interested in data projects, UX ideas, or even K-pop and food recommendations,
+        feel free to reach out to me via email or social media.
       </p>
-
-      <div class="timeline-wrap">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Exchange Student · 某大學</div>
-            <div class="timeline-meta">2023.09 – 2024.06 · Country</div>
-            <div class="timeline-body">
-              與不同國家的同學合作商業企劃，負責資料整理、簡報設計，
-              並以英文進行期末報告。
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Information Management Student · NSYSU</div>
-            <div class="timeline-meta">20XX – Now</div>
-            <div class="timeline-body">
-              參與資料庫、系統分析、網頁設計等課程專題，嘗試把理論應用在實際生活情境，
-              例如美食地圖 App、長者友善導航等。
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Side Projects & Competitions</div>
-            <div class="timeline-meta">On-going</div>
-            <div class="timeline-body">
-              可放系上專題競賽、InnoServe、黑客松、或個人 GitHub 專案連結等。
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Traits -->
-    <section class="section" id="traits">
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2 class="section-title">Traits & Keywords</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-sub">
-        用幾個關鍵詞描述你的工作風格、學習特質、價值觀，讓別人更好記住你。
-      </p>
-
-      <div class="traits-wrap">
-        <div class="trait-chip">觀察入微 · 喜歡記錄細節</div>
-        <div class="trait-chip">樂於溝通 · 願意傾聽</div>
-        <div class="trait-chip">時間管理控 · 重視期限</div>
-        <div class="trait-chip">主動學習 · 願意試錯</div>
-        <div class="trait-chip">K-pop & 美食作為創作靈感</div>
-        <div class="trait-chip">能獨立完成任務，也能合作</div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="section-header">
-        <div class="section-line"></div>
-        <h2 class="section-title">Contact</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-sub">
-        可以放 Email、LinkedIn、Instagram 或其他你願意公開的聯絡方式。
-      </p>
-
-      <div class="contact-box">
-        <div class="contact-row"><strong>Email：</strong> yourmail@example.com</div>
-        <div class="contact-row"><strong>LinkedIn：</strong> linkedin.com/in/your-name</div>
-        <div class="contact-row"><strong>GitHub：</strong> github.com/your-id</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Back to top -->
-  <button id="back-to-top" title="Back to top">↑</button>
-
-  <footer>
-    © 2025 Your Name · Personal Resume Page
-  </footer>
-
-  <!-- jQuery & three.js CDN -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
-
-  <script>
-    // ===== jQuery：導覽、特效 =====
-    $(function () {
-      // Nav hover 效果
-      $('.item-container').hover(
-        function () { $(this).addClass('hover-active'); },
-        function () { $(this).removeClass('hover-active'); }
-      );
-
-      // Nav / 按鈕平滑捲動
-      $('.item-container, .btn[data-scroll]').on('click', function (e) {
-        e.preventDefault();
-        var target = $(this).data('target') || $(this).data('scroll');
-        if (!target) return;
-        var $target = $(target);
-        if ($target.length) {
-          $('html, body').animate({
-            scrollTop: $target.offset().top - 80
-          }, 600);
-        }
-      });
-
-      // Hero More about me slideToggle
-      $('#btn-more').on('click', function () {
-        $('#hero-more').slideToggle(350);
-      });
-
-      // 捲動淡入 section
-      function revealSections() {
-        var windowBottom = $(window).scrollTop() + $(window).height();
-        $('.section').each(function () {
-          var elemTop = $(this).offset().top + 60;
-          if (windowBottom > elemTop) {
-            $(this).addClass('visible');
-          }
-        });
-      }
-      revealSections();
-      $(window).on('scroll', revealSections);
-
-      // Back to top 顯示 / 隱藏
-      var $backTop = $('#back-to-top');
-      $(window).on('scroll', function () {
-        if ($(this).scrollTop() > 280) {
-          $backTop.addClass('show');
-        } else {
-          $backTop.removeClass('show');
-        }
-      });
-      $backTop.on('click', function () {
-        $('html, body').animate({ scrollTop: 0 }, 600);
-      });
-    });
-
-    // ===== three.js：使用 D4B8B4 / DDD0C8 色系 =====
-    (function () {
-      if (typeof THREE === 'undefined') {
-        console.error('three.js 沒載到，請確認 CDN');
-        return;
-      }
-
-      var container = document.getElementById('three-bg');
-      var width = container.clientWidth || window.innerWidth;
-      var height = container.clientHeight || window.innerHeight * 0.7;
-
-      var scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xDDD0C8); // main-cream
-
-      var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100);
-      camera.position.set(0, 0, 6);
-
-      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setPixelRatio(window.devicePixelRatio || 1);
-      renderer.setSize(width, height);
-      container.appendChild(renderer.domElement);
-
-      // 燈光
-      var ambient = new THREE.AmbientLight(0xffffff, 0.85);
-      scene.add(ambient);
-      var directional = new THREE.DirectionalLight(0xF5EFE9, 0.95);
-      directional.position.set(3, 4, 5);
-      scene.add(directional);
-
-      // 幾何主體：主色粉
-      var geo = new THREE.IcosahedronGeometry(1.8, 1);
-      var mat = new THREE.MeshStandardMaterial({
-        color: 0xD4B8B4,   // main-pink
-        roughness: 0.45,
-        metalness: 0.12
-      });
-      var shape = new THREE.Mesh(geo, mat);
-      scene.add(shape);
-
-      // 小球：只用主色＆延伸
-      var sphereGeo = new THREE.SphereGeometry(0.14, 16, 16);
-      var sphereColors = [0xD4B8B4, 0xDDD0C8, 0xE3CFCB, 0xC9A39E];
-      var spheres = [];
-      for (var i = 0; i < 12; i++) {
-        var sphereMat = new THREE.MeshStandardMaterial({
-          color: sphereColors[i % sphereColors.length],
-          roughness: 0.5,
-          metalness: 0.12
-        });
-        var s = new THREE.Mesh(sphereGeo, sphereMat);
-        var radius = 3 + Math.random() * 1.4;
-        var angle = (i / 12) * Math.PI * 2;
-        s.userData.radius = radius;
-        s.userData.angle = angle;
-        s.position.set(
-          Math.cos(angle) * radius,
-          Math.sin(angle) * 0.5,
-          Math.sin(angle) * radius
-        );
-        spheres.push(s);
-        scene.add(s);
-      }
-
-      var clock = new THREE.Clock();
-      function animate() {
-        requestAnimationFrame(animate);
-        var t = clock.getElapsedTime();
-
-        shape.rotation.x += 0.0035;
-        shape.rotation.y += 0.0045;
-
-        spheres.forEach(function (s, idx) {
-          var angle = s.userData.angle + t * 0.25 + idx * 0.04;
-          var r = s.userData.radius;
-          s.position.x = Math.cos(angle) * r;
-          s.position.z = Math.sin(angle) * r;
-          s.position.y = Math.sin(t * 0.9 + idx) * 0.5;
-        });
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      // Resize
-      window.addEventListener('resize', function () {
-        var newWidth = container.clientWidth || window.innerWidth;
-        var newHeight = container.clientHeight || window.innerHeight * 0.7;
-        camera.aspect = newWidth / newHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(newWidth, newHeight);
-      });
-    })();
-  </script>
+    <!-- Return 按鈕 -->
+    <div class="return-button-wrapper">
+      <button class="return-btn"
+              onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        ↑
+      </button>
+    </div>
+  </div>
 </body>
 </html>
