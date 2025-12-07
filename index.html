@@ -9,6 +9,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- Devicon：技能 icon -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 
   <style>
     * {
@@ -90,7 +93,6 @@
       text-align: center;
     }
 
-    /* Hi, I'm Janet：漂亮一點的 serif 字體 */
     .intro-small {
       font-family: "Playfair Display", serif;
       font-weight: 600;
@@ -103,7 +105,7 @@
       font-size: 1.4rem;
     }
 
-    /* 動態 emoji 頭像（你自己的 Q 版頭像） */
+    /* 動態 emoji 頭像 */
     .animated-avatar {
       width: 160px;
       height: 160px;
@@ -117,7 +119,6 @@
       border-radius: 50%;
       animation: headTilt 4s ease-in-out infinite;
     }
-
     @keyframes float {
       0%   { transform: translateY(0); }
       50%  { transform: translateY(-6px); }
@@ -186,7 +187,7 @@
     }
     .tk    { background: #111; color: #fff; }
 
-    /* ========= 下方區塊通用 ========= */
+    /* ========= 區塊共用 ========= */
     section.anchor {
       padding: 32px;
       border-top: 1px solid #e5e7eb;
@@ -201,32 +202,56 @@
       max-width: 680px;
     }
 
-    /* ======= About：左文字右照片 ======= */
-    #about .about-layout {
+    /* ======= About：簡歷 + 照片 ======= */
+    #about .resume-layout {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 32px;
       max-width: 860px;
-      margin: 6px auto 0;
+      margin: 10px auto 0;
     }
 
-    .about-text {
+    .resume-left {
       flex: 2;
       font-size: 0.9rem;
-      line-height: 1.7;
       color: #4b5563;
     }
 
-    .about-text p + p {
-      margin-top: 12px;
+    .resume-intro {
+      margin-bottom: 18px;
+      line-height: 1.7;
     }
 
+    .resume-section {
+      margin-bottom: 14px;
+    }
+    .resume-section-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      color: #111827;
+    }
+    .resume-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .resume-list li {
+      margin-bottom: 4px;
+    }
+    .resume-tagline {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    /* 照片卡片：預設直立，點擊才傾斜 */
     .about-photo-card {
       flex: 1;
       max-width: 260px;
       min-width: 200px;
-      perspective: 800px; /* 讓旋轉有立體感 */
+      perspective: 800px;
+      cursor: pointer;
     }
 
     .about-photo-inner {
@@ -234,8 +259,8 @@
       overflow: hidden;
       border: 1px solid #e5e7eb;
       box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      transform: rotate(-2deg);
       transform-origin: center center;
+      transform: rotate(0deg) translateY(0);
       transition:
         transform 0.4s cubic-bezier(0.21, 0.61, 0.35, 1),
         box-shadow 0.4s ease;
@@ -248,15 +273,64 @@
       object-fit: cover;
     }
 
-    /* 滑鼠移到照片：微微抬起＋歪斜 */
-    .about-photo-card:hover .about-photo-inner {
-      transform: translateY(-10px) rotate(3deg);
+    /* 點擊後加上的 class：傾斜＋抬起 */
+    .about-photo-inner.tilted {
+      transform: translateY(-12px) rotate(4deg);
       box-shadow: 0 20px 34px rgba(0,0,0,0.28);
     }
 
-    /* ========= Skills / Contact ========= */
-    #skills p, #contact p {
-      max-width: 680px;
+    /* ======= Skills 區塊 ======= */
+    .skills-wrapper {
+      max-width: 860px;
+      margin: 10px auto 0;
+    }
+
+    .skills-group {
+      margin-bottom: 18px;
+    }
+
+    .skills-group-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-card {
+      min-width: 110px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    .skill-icon {
+      font-size: 22px;
+    }
+
+    .skill-label-main {
+      font-weight: 600;
+      display: block;
+    }
+    .skill-label-sub {
+      font-size: 0.75rem;
+      color: #9ca3af;
     }
 
     /* Return 按鈕 */
@@ -283,7 +357,7 @@
       opacity: 0.95;
     }
 
-    /* RWD 手機版：About 改成上下排 */
+    /* RWD */
     @media (max-width: 768px) {
       body { padding: 12px; }
       .window { border-radius: 16px; }
@@ -294,12 +368,12 @@
       .title-sub  { font-size: 1.2rem; }
       section.anchor { padding: 24px 18px 32px; }
 
-      #about .about-layout {
+      #about .resume-layout {
         flex-direction: column;
         align-items: center;
       }
-      .about-text {
-        text-align: left;
+      .resume-left {
+        width: 100%;
       }
       .about-photo-card {
         max-width: 260px;
@@ -332,7 +406,6 @@
         Hi, I&apos;m Janet<span> 👋</span>
       </div>
 
-      <!-- 你的 Q 版 emoji 頭像 -->
       <div class="animated-avatar">
         <img src="janet-emoji.png" alt="Janet Emoji Avatar">
       </div>
@@ -355,28 +428,51 @@
       </div>
     </div>
 
-    <!-- ABOUT：左文字右照片 -->
+    <!-- ABOUT：簡歷 + 照片 -->
     <section id="about" class="anchor">
       <h2>About Me</h2>
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            Hello! I&apos;m Janet, currently majoring in Information Management.
-            During my year abroad, I had the chance to study and live with classmates
-            from different countries, which strengthened both my language skills
-            and my ability to work in diverse teams.
+      <div class="resume-layout">
+        <!-- 左：簡歷條列 -->
+        <div class="resume-left">
+          <p class="resume-intro">
+            I&apos;m Janet, an Information Management student who enjoys connecting data,
+            design, and real-life experiences. Here&apos;s a quick snapshot of my background:
           </p>
-          <p>
-            Outside of class, I enjoy K-pop, exploring cafés and hunting for good food.
-            These interests often become inspiration for my projects – such as travel
-            planning tools, restaurant recommendation pages, or friendly interfaces
-            for people who are not familiar with technology.
+
+          <div class="resume-section">
+            <div class="resume-section-title">Education</div>
+            <ul class="resume-list">
+              <li>National Dong Hwa University – Department of Information Management (Current student)</li>
+            </ul>
+          </div>
+
+          <div class="resume-section">
+            <div class="resume-section-title">Language Skills</div>
+            <ul class="resume-list">
+              <li>Mandarin – Native</li>
+              <li>English – IELTS 7.0</li>
+              <li>Korean – TOPIK Level 3</li>
+            </ul>
+          </div>
+
+          <div class="resume-section">
+            <div class="resume-section-title">Strengths & Interests</div>
+            <ul class="resume-list">
+              <li>Curious about data-driven products and user experience.</li>
+              <li>Enjoy organizing information and making things easy to understand.</li>
+              <li>K-pop, cafés, and discovering good food often inspire my side projects.</li>
+            </ul>
+          </div>
+
+          <p class="resume-tagline">
+            I hope to grow into someone who can bridge technology, people, and culture –
+            whether it&apos;s through product design, data analysis, or creative digital experiences.
           </p>
         </div>
 
-        <!-- 右邊照片：請放一張 janet-about.jpg -->
+        <!-- 右：照片卡片（點擊才傾斜） -->
         <div class="about-photo-card">
-          <div class="about-photo-inner">
+          <div class="about-photo-inner" id="about-photo-inner">
             <img src="janet-about.jpg" alt="Janet portrait">
           </div>
         </div>
@@ -386,10 +482,91 @@
     <!-- SKILLS -->
     <section id="skills" class="anchor">
       <h2>Skills</h2>
-      <p>
-        Python · R · SQL · HTML · CSS · JavaScript · basic React · data analysis ·
-        presentation &amp; communication.
-      </p>
+      <div class="skills-wrapper">
+        <!-- Programming Languages -->
+        <div class="skills-group">
+          <div class="skills-group-title">Programming Languages</div>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-cplusplus-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">C++</span>
+                <span class="skill-label-sub">Algorithm &amp; basics</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-python-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">Python</span>
+                <span class="skill-label-sub">Data &amp; scripting</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-javascript-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">JavaScript</span>
+                <span class="skill-label-sub">Interactive web</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web & Frontend -->
+        <div class="skills-group">
+          <div class="skills-group-title">Web &amp; Frontend</div>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-html5-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">HTML5</span>
+                <span class="skill-label-sub">Semantic layouts</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-css3-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">CSS3</span>
+                <span class="skill-label-sub">Responsive design</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-react-original colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">React (basic)</span>
+                <span class="skill-label-sub">Component thinking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & Others -->
+        <div class="skills-group">
+          <div class="skills-group-title">Tools &amp; Others</div>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-mysql-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">MySQL</span>
+                <span class="skill-label-sub">DB design &amp; query</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-git-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">Git &amp; GitHub</span>
+                <span class="skill-label-sub">Version control</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-figma-plain colored skill-icon"></i>
+              <div>
+                <span class="skill-label-main">Figma</span>
+                <span class="skill-label-sub">Basic UI design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CONTACT -->
@@ -409,5 +586,17 @@
       </button>
     </div>
   </div>
+
+  <!-- 點擊照片時切換傾斜效果 -->
+  <script>
+    const photoCard = document.querySelector('.about-photo-card');
+    const photoInner = document.getElementById('about-photo-inner');
+
+    if (photoCard && photoInner) {
+      photoCard.addEventListener('click', () => {
+        photoInner.classList.toggle('tilted');
+      });
+    }
+  </script>
 </body>
 </html>
