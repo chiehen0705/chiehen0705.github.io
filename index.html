@@ -5,20 +5,16 @@
   <title>Janet · Personal Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-        content="Janet's personal page – Information Management student with overseas experience, IELTS 7.0 and TOPIK Level 3." />
+        content="Janet's personal page – Information Management student with overseas study experience." />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-  <!-- Devicon：技能 icon -->
+  <!-- Devicon Icons -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       min-height: 100vh;
@@ -36,7 +32,6 @@
       padding: 24px;
     }
 
-    /* 外層視窗卡片 */
     .window {
       width: 100%;
       max-width: 960px;
@@ -47,7 +42,6 @@
       position: relative;
     }
 
-    /* 視窗上方列 */
     .window-header {
       display: flex;
       align-items: center;
@@ -57,12 +51,9 @@
       background: #f9fafb;
     }
 
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-    }
+    .browser-dots { display: flex; gap: 6px; }
     .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .red   { background: #ff5f57; }
+    .red { background: #ff5f57; }
     .amber { background: #febc2e; }
     .green { background: #28c840; }
 
@@ -74,11 +65,7 @@
       color: #374151;
     }
 
-    .nav {
-      display: flex;
-      gap: 20px;
-      font-size: 0.9rem;
-    }
+    .nav { display: flex; gap: 20px; font-size: 0.9rem; }
     .nav a {
       text-decoration: none;
       color: #6b7280;
@@ -87,11 +74,8 @@
     }
     .nav a:hover { color: #111827; }
 
-    /* ========= HERO 主頁 ========= */
-    .hero {
-      padding: 42px 32px 36px;
-      text-align: center;
-    }
+    /* HERO */
+    .hero { padding: 42px 32px 36px; text-align: center; }
 
     .intro-small {
       font-family: "Playfair Display", serif;
@@ -100,12 +84,8 @@
       letter-spacing: 0.03em;
       color: #111827;
     }
-    .intro-small span {
-      margin-left: 6px;
-      font-size: 1.4rem;
-    }
+    .intro-small span { margin-left: 6px; font-size: 1.4rem; }
 
-    /* 動態 emoji 頭像 */
     .animated-avatar {
       width: 160px;
       height: 160px;
@@ -115,20 +95,21 @@
     .animated-avatar img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       border-radius: 50%;
       animation: headTilt 4s ease-in-out infinite;
+      object-fit: cover;
     }
+
     @keyframes float {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-6px); }
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
       100% { transform: translateY(0); }
     }
     @keyframes headTilt {
-      0%   { transform: rotate(0deg); }
-      25%  { transform: rotate(-3deg); }
-      50%  { transform: rotate(0deg); }
-      75%  { transform: rotate(3deg); }
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(3deg); }
       100% { transform: rotate(0deg); }
     }
 
@@ -136,13 +117,6 @@
       margin-top: 26px;
       font-size: 2.4rem;
       font-weight: 700;
-    }
-
-    .title-sub {
-      margin-top: 4px;
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: #4b5563;
     }
 
     .tagline {
@@ -178,30 +152,11 @@
       transform: translateY(-3px);
       opacity: 0.92;
     }
-    .email { background: #ffcf4a; }
-    .x     { background: #111827; color: #fff; }
-    .ig {
-      background: radial-gradient(circle at 30% 30%, #fdf497 0, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-      color: #fff;
-    }
-    .tk    { background: #111; color: #fff; }
 
-    /* ========= 區塊共用 ========= */
-    section.anchor {
-      padding: 32px;
-      border-top: 1px solid #e5e7eb;
-    }
-    section.anchor h2 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-    section.anchor p {
-      font-size: 0.9rem;
-      color: #6b7280;
-      max-width: 680px;
-    }
+    /* ABOUT */
+    section.anchor { padding: 32px; border-top: 1px solid #e5e7eb; }
+    section.anchor h2 { font-size: 1.25rem; margin-bottom: 10px; }
 
-    /* ======= ABOUT：字卡 + 照片 ======= */
     #about .resume-layout {
       display: flex;
       align-items: flex-start;
@@ -211,32 +166,18 @@
       margin: 10px auto 0;
     }
 
-    /* 左邊字卡 */
     .resume-card {
       flex: 2;
       background: #f9fafb;
       border-radius: 16px;
       border: 1px solid #e5e7eb;
-      padding: 18px 20px 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-    }
-
-    .resume-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #111827;
-      color: #f9fafb;
-      margin-bottom: 8px;
+      padding: 20px;
     }
 
     .resume-name-line {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 8px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
       color: #111827;
     }
 
@@ -247,118 +188,52 @@
       margin-bottom: 16px;
     }
 
-    .resume-section {
-      margin-bottom: 12px;
-    }
     .resume-section-title {
       font-weight: 600;
-      font-size: 0.9rem;
       margin-bottom: 4px;
-      color: #111827;
     }
+
     .resume-list {
       list-style: none;
       padding-left: 0;
-      font-size: 0.9rem;
+      margin-bottom: 12px;
       color: #4b5563;
-    }
-    .resume-list li {
-      margin-bottom: 4px;
-    }
-    .resume-tagline {
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: #6b7280;
+      font-size: 0.9rem;
     }
 
-    /* 右邊照片卡片：預設直立，hover 才傾斜 */
     .about-photo-card {
       flex: 1;
-      max-width: 260px;
-      min-width: 200px;
       perspective: 800px;
       cursor: pointer;
+      max-width: 260px;
     }
 
     .about-photo-inner {
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      transform-origin: center center;
-      transform: rotate(0deg) translateY(0);
-      transition:
-        transform 0.4s cubic-bezier(0.21, 0.61, 0.35, 1),
-        box-shadow 0.4s ease;
+      transition: transform 0.35s ease;
     }
 
-    .about-photo-inner img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* 滑鼠移到整張卡片上才移動＋傾斜 */
     .about-photo-card:hover .about-photo-inner {
-      transform: translateY(-12px) rotate(4deg);
-      box-shadow: 0 20px 34px rgba(0,0,0,0.28);
+      transform: translateY(-10px) rotate(4deg);
     }
 
-    /* ======= Skills 區塊 ======= */
-    .skills-wrapper {
-      max-width: 860px;
-      margin: 10px auto 0;
-    }
-
-    .skills-group {
-      margin-bottom: 18px;
-    }
-
-    .skills-group-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-      color: #111827;
-    }
-
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
     .skill-card {
-      min-width: 120px;
-      padding: 10px 12px;
+      background: #f9fafb;
       border-radius: 12px;
       border: 1px solid #e5e7eb;
-      background: #f9fafb;
+      padding: 10px 12px;
       display: flex;
-      align-items: center;
       gap: 8px;
-      font-size: 0.85rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      align-items: center;
+      transition: transform 0.18s ease;
     }
-    .skill-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    }
+    .skill-card:hover { transform: translateY(-3px); }
 
-    .skill-icon {
-      font-size: 22px;
-    }
-
-    .skill-label-main {
-      font-weight: 600;
-      display: block;
-    }
-    .skill-label-sub {
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-
-    /* Return 按鈕（無陰影 + hover 顯示文字） */
+    /* RETURN BUTTON */
     .return-button-wrapper {
       position: absolute;
       bottom: 18px;
@@ -369,15 +244,17 @@
     }
 
     .return-label {
-      font-size: 0.75rem;
+      opacity: 0;
+      background: #111827;
+      color: #fff;
       padding: 4px 8px;
       border-radius: 6px;
-      background: #111827;
-      color: #f9fafb;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-      white-space: nowrap;
+      font-size: 0.75rem;
+      transition: opacity 0.18s ease;
+    }
+
+    .return-button-wrapper:hover .return-label {
+      opacity: 1;
     }
 
     .return-btn {
@@ -385,59 +262,17 @@
       width: 40px;
       border-radius: 999px;
       border: 1px solid #d1d5db;
-      background: #ffffff;
-      color: #111827;
-      font-size: 18px;
+      background: #fff;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+      font-size: 18px;
     }
 
-    .return-button-wrapper:hover .return-label {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .return-btn:hover {
-      background: #f3f4f6;
-      border-color: #9ca3af;
-      transform: translateY(-2px);
-    }
-
-    /* RWD */
-    @media (max-width: 768px) {
-      body { padding: 12px; }
-      .window { border-radius: 16px; }
-      .window-header { flex-wrap: wrap; gap: 10px; }
-      .logo-name { order: 3; width: 100%; text-align: center; }
-      .hero { padding: 32px 18px 28px; }
-      .title-main { font-size: 2rem; }
-      .title-sub  { font-size: 1.2rem; }
-      section.anchor { padding: 24px 18px 32px; }
-
-      #about .resume-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-      .resume-card {
-        width: 100%;
-      }
-      .about-photo-card {
-        max-width: 260px;
-        width: 100%;
-      }
-
-      .return-button-wrapper {
-        bottom: 14px;
-        right: 14px;
-      }
-    }
   </style>
 </head>
 
 <body>
   <div class="window" id="top">
+
     <!-- Header -->
     <div class="window-header">
       <div class="browser-dots">
@@ -455,50 +290,39 @@
 
     <!-- HERO -->
     <div class="hero">
-      <div class="intro-small">
-        Hi, I&apos;m Janet<span> 👋</span>
-      </div>
+      <div class="intro-small">Hi, I’m Janet <span>👋</span></div>
 
       <div class="animated-avatar">
-        <img src="janet-emoji.png" alt="Janet Emoji Avatar">
+        <img src="janet-emoji.png" />
       </div>
 
       <div class="title-main">Information Management Student</div>
-      <div class="title-sub">K-pop &amp; Food Lover</div>
 
       <p class="tagline">
-        I’m an Information Management student with one year of overseas study experience.
-        Fluent in Mandarin, English, and Korean, with <span>IELTS 7.0</span> and
-        <span>TOPIK Level 3</span>. I enjoy combining technology with human-centered creativity,
-        and I hope to work in roles that connect <span>data-driven innovation, UX design, and cross-cultural collaboration</span>.
+        I’m an Information Management student with overseas study experience.
+        I enjoy exploring how technology can improve everyday life, and I’m passionate about
+        learning, building, and discovering meaningful ideas through digital tools.
       </p>
-
-      <div class="social-row">
-        <button class="social-btn email">✉️</button>
-        <button class="social-btn x">X</button>
-        <button class="social-btn ig">♡</button>
-        <button class="social-btn tk">♫</button>
-      </div>
     </div>
 
-    <!-- ABOUT：字卡 + 照片 -->
+    <!-- ABOUT -->
     <section id="about" class="anchor">
       <h2>About Me</h2>
+
       <div class="resume-layout">
-        <!-- 左：字卡式簡歷 -->
+
         <div class="resume-card">
-          <div class="resume-tag">PROFILE</div>
-          <div class="resume-name-line">Janet · Information Management Student</div>
+          <div class="resume-name-line">洪婕恩（Janet）</div>
 
           <p class="resume-intro">
-            I enjoy connecting data, design, and real-life experiences. Here is a quick snapshot
-            of who I am and what I&apos;m working on.
+            I enjoy organizing information, solving problems, and understanding how technology can help people.
+            Here is a brief overview of my background.
           </p>
 
           <div class="resume-section">
             <div class="resume-section-title">Education</div>
             <ul class="resume-list">
-              <li>National Dong Hwa University – Department of Information Management (Current student)</li>
+              <li>National Dong Hwa University – Information Management (Current student)</li>
             </ul>
           </div>
 
@@ -511,139 +335,28 @@
             </ul>
           </div>
 
-          <div class="resume-section">
-            <div class="resume-section-title">Strengths</div>
-            <ul class="resume-list">
-              <li>Enjoy organizing information and making complex ideas easy to understand.</li>
-              <li>Comfortable working in multicultural environments thanks to overseas experience.</li>
-              <li>Curious about how technology can support people&apos;s everyday life.</li>
-            </ul>
-          </div>
-
-          <div class="resume-section">
-            <div class="resume-section-title">Interests</div>
-            <ul class="resume-list">
-              <li>K-pop, cafés, and discovering good food.</li>
-              <li>Building small web projects inspired by daily life.</li>
-            </ul>
-          </div>
-
-          <p class="resume-tagline">
-            In the future, I hope to grow into someone who can bridge technology, people,
-            and culture through thoughtful products and experiences.
-          </p>
         </div>
 
-        <!-- 右：照片卡片（hover 移動＋傾斜） -->
         <div class="about-photo-card">
           <div class="about-photo-inner">
-            <img src="janet-about.jpg" alt="Janet portrait">
+            <img src="janet-about.jpg" />
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="anchor">
       <h2>Skills</h2>
-      <div class="skills-wrapper">
-        <!-- Programming Languages -->
-        <div class="skills-group">
-          <div class="skills-group-title">Programming Languages</div>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <i class="devicon-cplusplus-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">C++</span>
-                <span class="skill-label-sub">Algorithm &amp; basics</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-python-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">Python</span>
-                <span class="skill-label-sub">Data &amp; scripting</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-javascript-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">JavaScript</span>
-                <span class="skill-label-sub">Interactive web</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Web & Frontend -->
-        <div class="skills-group">
-          <div class="skills-group-title">Web &amp; Frontend</div>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <i class="devicon-html5-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">HTML5</span>
-                <span class="skill-label-sub">Semantic layouts</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-css3-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">CSS3</span>
-                <span class="skill-label-sub">Responsive design</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-react-original colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">React (basic)</span>
-                <span class="skill-label-sub">Component thinking</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & Media / Editing -->
-        <div class="skills-group">
-          <div class="skills-group-title">Tools &amp; Media Editing</div>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <i class="devicon-mysql-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">MySQL</span>
-                <span class="skill-label-sub">DB design &amp; query</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-git-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">Git &amp; GitHub</span>
-                <span class="skill-label-sub">Version control</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-figma-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">Figma</span>
-                <span class="skill-label-sub">Basic UI design</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-premierepro-plain colored skill-icon"></i>
-              <div>
-                <span class="skill-label-main">Adobe Premiere Pro</span>
-                <span class="skill-label-sub">Video editing</span>
-              </div>
-            </div>
-            <div class="skill-card">
-              <i class="devicon-apple-original skill-icon"></i>
-              <div>
-                <span class="skill-label-main">Final Cut Pro</span>
-                <span class="skill-label-sub">Editing &amp; storytelling</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="devicon-python-plain colored"></i>Python</div>
+        <div class="skill-card"><i class="devicon-html5-plain colored"></i>HTML</div>
+        <div class="skill-card"><i class="devicon-cplusplus-plain colored"></i>C++</div>
+        <div class="skill-card"><i class="devicon-css3-plain colored"></i>CSS</div>
+        <div class="skill-card"><i class="devicon-premierepro-plain colored"></i>Premiere Pro</div>
+        <div class="skill-card"><i class="devicon-apple-original"></i>Final Cut Pro</div>
       </div>
     </section>
 
@@ -651,12 +364,12 @@
     <section id="contact" class="anchor">
       <h2>Contact</h2>
       <p>
-        If you&apos;re interested in data projects, UX ideas, or even K-pop and food recommendations,
-        feel free to reach out to me via email or social media.
+        If you are interested in my projects or would like to get in touch,
+        feel free to reach out through email or social media. I’d be happy to connect.
       </p>
     </section>
 
-    <!-- 返回頂部按鈕（無陰影＋hover 顯示 RETURN） -->
+    <!-- RETURN BUTTON -->
     <div class="return-button-wrapper">
       <span class="return-label">RETURN</span>
       <button class="return-btn"
@@ -664,6 +377,7 @@
         ↑
       </button>
     </div>
+
   </div>
 </body>
 </html>
